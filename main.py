@@ -13,6 +13,7 @@ API_KEY = os.getenv("API_KEY")
 API_USER = os.getenv("API_USER")
 API_URL = os.getenv("API_URL")
 OUTPUT_FILE = os.getenv("OUTPUT_FILE")
+YEAR = int(os.getenv("YEAR"))
 
 # Function to get the Unix timestamp of the start and end of a specific year
 def get_year_timestamps(year):
@@ -21,7 +22,7 @@ def get_year_timestamps(year):
     return int(start_date.timestamp()), int(end_date.timestamp() - 1)  # End timestamp is just before the new year
 
 # Timestamps for the start and end of 2023
-start_ts, end_ts = get_year_timestamps(2023)
+start_ts, end_ts = get_year_timestamps(YEAR)
 
 def get_scrobbles(api_key, user, limit=200, page=1, from_ts=None, to_ts=None):
     params = {
