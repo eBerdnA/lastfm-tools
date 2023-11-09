@@ -41,6 +41,7 @@ def process_scrobbles(scrobles):
 
 if __name__ == "__main__":
     scrobbles = download_all_scrobbles(API_KEY, API_USER, start_ts, end_ts)
+    print(f'Download complete. Total scrobbles downloaded: {len(scrobbles)}')
     result = process_scrobbles(scrobbles)
     if result:
         sys.exit(1)
