@@ -3,6 +3,7 @@
 import requests
 from datetime import datetime, timedelta
 from collections import Counter
+import pytz
 
 from main import API_KEY, API_USER, API_URL
 
@@ -17,8 +18,10 @@ def download_scrobbles(api_key, user):
     Download scrobbles from the Last.fm API for the last three days for the specified user.
     """
     # Calculate date range: from 3 days ago until now
-    end_date = datetime.utcnow()
+    end_date = datetime.now(pytz.timezone('Europe/Berlin'))
     start_date = end_date - timedelta(days=3)
+    print(f'start_date: {start_date}')
+    print(f'end_date:{end_date}')
 
     # Convert dates to UNIX timestamp format
     start_timestamp = int(start_date.timestamp())
